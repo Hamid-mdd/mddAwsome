@@ -59,7 +59,7 @@ const DATA = [
 const Item = ({ item, onPress, backgroundColor, textColor }) => (
   <TouchableOpacity onPress={onPress} style={[styles.item,]}>
  
-       <Image source={{url:item.Image}} style={{marginHorizontal:'0%', marginTop:0, width:80, height:80}} />
+       <Image source={{url:item.Image}} style={{marginHorizontal:'0%', width:80, height:80, backgroundColor:}} />
         <View style={styles.textContainer}>
                 <Text style={{fontSize:13, color:'gray', marginHorizontal:10, marginBottom:10}}>{item.model}</Text>
                     <Text style={{fontSize:15, color:'black', marginHorizontal:10, marginBottom:5, fontWeight:'600'}}>{item.name}</Text>

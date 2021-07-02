@@ -11,7 +11,7 @@ const styles =StyleSheet.create({
             marginHorizontal:20
           },
           android: {
-            marginTop:120,
+            marginTop:110,
             marginHorizontal:20
           },
     }),
@@ -20,12 +20,6 @@ const styles =StyleSheet.create({
     height:'18%',
     width:'95%',
     },
-    // SearchFieldInputView:{
-    //     height:'8%',
-    //     width:'95%',
-    //     marginTop:50
-    //     },
-
     SearchFieldInputView:{
         ...Platform.select({
           ios: {
@@ -34,7 +28,7 @@ const styles =StyleSheet.create({
                 marginTop:50
           },
           android: {
-                    height:'8%',
+                    height:'10%',
                     width:'95%',
                     marginTop:10
           },
@@ -46,9 +40,29 @@ const styles =StyleSheet.create({
         marginTop:20,
         marginLeft:10,
         borderRadius:5,
-
-        // marginHorizontal:'10%'
     },
+
+    SearchcarsInput:{
+        ...Platform.select({
+          ios: {
+            flex:2,
+            paddingRight:10,
+            marginTop:20,
+            marginLeft:10,
+            borderRadius:5,
+          },
+          android: {
+            flex:2,
+            paddingRight:10,
+            marginTop:20,
+            marginLeft:10,
+            borderRadius:5,
+          },
+    }),
+},
+
+
+    
     inputIcon:{
         paddingBottom:10
     },
