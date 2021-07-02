@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
   Dimensions,
   Platform,
+  KeyboardAvoidingView,
 } from "react-native";
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import MapModal from './MapModal';
@@ -17,10 +18,10 @@ import MapModal from './MapModal';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { markers, mapDarkStyle, mapStandardStyle } from '../Auth/model/mapArray';
 const { width, height } = Dimensions.get("window");
-const CARD_HEIGHT = 280;
+const CARD_HEIGHT_ANDROID = 220;
+const CARD_HEIGHT_IOS = 260;
 const CARD_WIDTH = width * 0.9;
-const SPACING_FOR_CARD_INSET = width * 0.1 - 10;
-
+const SPACING_FOR_CARD_INSET = width * 0.1 - 15;
 const ExploreScreen = () => {
   const initialMapState = {
     markers,
@@ -119,6 +120,9 @@ const ExploreScreen = () => {
   const _scrollView = React.useRef(null);
 
   return (
+    <KeyboardAvoidingView
+    behavior= 'padding'
+  >
     <View style={styles.container}>
       <MapView
         ref={_map}
@@ -189,7 +193,7 @@ const ExploreScreen = () => {
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + 300}
-        snapToAlignment="center"
+        snapToAlignment='start'
         style={styles.scrollView}
         contentInset={{
           top: 0,
@@ -253,6 +257,7 @@ const ExploreScreen = () => {
         ))}
       </Animated.ScrollView>
     </View>
+    </KeyboardAvoidingView>
   );
 };
 
@@ -261,7 +266,8 @@ export default ExploreScreen;
 const styles = StyleSheet.create({
   container: {
     // flex: 4,
-    height:'80%'
+    height:'80%',
+    
   },
   searchBox: {
     position:'absolute', 
@@ -305,9 +311,12 @@ const styles = StyleSheet.create({
     // bottom: 0,
     // left: 0,
     // right: 0,
-    // top:450,
-    // paddingVertical: 25,
-    marginTop:'140%'
+
+    top:Platform.OS ==='android' ? 445 :550,
+    paddingVertical: 5,
+    // marginTop:Platform.OS ==='android' ? '120%':'140%',
+    paddingLeft:-50
+
   },
   endPadding: {
     paddingRight: width - CARD_WIDTH,
@@ -323,9 +332,11 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     shadowOpacity: 0.3,
     shadowOffset: { x: 2, y: -2 },
-    height: CARD_HEIGHT,
+    height: Platform.OS === 'android' ? CARD_HEIGHT_ANDROID : CARD_HEIGHT_IOS,
     width: CARD_WIDTH,
     overflow: "hidden",
+
+
   },
   cardImage: {
     flex: 3,

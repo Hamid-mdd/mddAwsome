@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Header, Content,Text, Title,Item, Input, Icon , Left, Body, Button, Right} from 'native-base';
 import { View , Platform, StatusBar, SafeAreaView, FlatList , Modal, Pressable, StyleSheet, TouchableOpacity, Image} from 'react-native'
 import styles from './auth'
+import { set } from 'react-native-reanimated';
 
 
 
@@ -106,6 +107,10 @@ function SearchCars({navigation}){
             <Modal
                 animationType="slide"
                 visible={modalVisible}
+                onRequestClose={()=>{
+                    setModalVisible(!modalVisible)
+                }}
+                presentationStyle='formSheet'
      
             >
             <View style={styles.DashboardContainer}>
