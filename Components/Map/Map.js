@@ -14,9 +14,9 @@ import {
 } from "react-native";
 import MapView, {PROVIDER_GOOGLE} from "react-native-maps";
 import MapModal from './MapModal';
-
+import MapStyle from './MapStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { markers, mapDarkStyle, mapStandardStyle } from '../Auth/model/mapArray';
+import { markers, mapDarkStyle, mapStandardStyle } from './model/mapArray';
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT_ANDROID = 220;
 const CARD_HEIGHT_IOS = 260;
@@ -28,19 +28,19 @@ const ExploreScreen = () => {
     categories: [
       { 
         name: 'Toyota', 
-        icon: <Ionicons style={styles.chipsIcon} name="car" size={18} />,
+        icon: <Ionicons style={MapStyle.chipsIcon} name="car" size={18} />,
       },
       {
         name: 'Honda',
-        icon: <Ionicons name="car-sharp" style={styles.chipsIcon} size={18} />,
+        icon: <Ionicons name="car-sharp" style={MapStyle.chipsIcon} size={18} />,
       },
       {
         name: 'BMW',
-        icon: <Ionicons name="car-sport" style={styles.chipsIcon} size={18} />,
+        icon: <Ionicons name="car-sport" style={MapStyle.chipsIcon} size={18} />,
       },
       {
         name: 'Mercedes',
-        icon: <Ionicons name="car-sharp" style={styles.chipsIcon} size={18} />,
+        icon: <Ionicons name="car-sharp" style={MapStyle.chipsIcon} size={18} />,
       },
   
   ],
@@ -102,9 +102,7 @@ const ExploreScreen = () => {
 
     return { scale };
   });
-  const onCategoryPress =()=>{
-    
-  }
+
 
   const onMarkerPress = (mapEventData) => {
     const markerID = mapEventData._targetInst.return.key;
@@ -123,11 +121,11 @@ const ExploreScreen = () => {
     <KeyboardAvoidingView
     behavior= 'padding'
   >
-    <View style={styles.container}>
+    <View >
       <MapView
         ref={_map}
         initialRegion={state.region}
-        style={styles.container}
+        style={MapStyle.container}
         // provider={PROVIDER_GOOGLE}
         customMapStyle={ mapStandardStyle}
       >
@@ -141,10 +139,10 @@ const ExploreScreen = () => {
           };
           return (
             <MapView.Marker key={index} coordinate={marker.coordinate} onPress={(e)=>onMarkerPress(e)}>
-              <Animated.View style={[styles.markerWrap]}>
+              <Animated.View style={[MapStyle.markerWrap]}>
                 <Animated.Image
                   source={require('../../Assets/Img/marker.png')}
-                  style={[styles.marker, scaleStyle]}
+                  style={[MapStyle.marker, scaleStyle]}
                   resizeMode="cover"
                 />
               </Animated.View>
@@ -152,21 +150,13 @@ const ExploreScreen = () => {
           );
         })}
       </MapView>
-      <View style={styles.searchBox}>
-        <TextInput 
-          placeholder="Search here"
-          placeholderTextColor="#000"
-          autoCapitalize="none"
-          style={{flex:1,padding:0}}
-        />
-        <Ionicons name="ios-search" size={20} />
-      </View>
-      <ScrollView
+
+      {/* <ScrollView
         horizontal
         scrollEventThrottle={1}
         showsHorizontalScrollIndicator={false}
         height={50}
-        style={styles.chipsScrollView}
+        style={MapStyle.chipsScrollView}
         contentInset={{ // iOS only
           top:0,
           left:0,
@@ -178,12 +168,12 @@ const ExploreScreen = () => {
         }}
       >
         {state.categories.map((category, index) => (
-          <TouchableOpacity key={index} style={styles.chipsItem}>
+          <TouchableOpacity key={index} style={MapStyle.chipsItem}>
             {category.icon}
             <Text>{category.name}</Text>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </ScrollView> */}
 
 
       <Animated.ScrollView
@@ -194,15 +184,15 @@ const ExploreScreen = () => {
         showsHorizontalScrollIndicator={false}
         snapToInterval={CARD_WIDTH + 300}
         snapToAlignment='start'
-        style={styles.scrollView}
+        // style={MapStyle.scrollView}
         contentInset={{
           top: 0,
           left: SPACING_FOR_CARD_INSET,
           bottom: 0,
-          right: SPACING_FOR_CARD_INSET
+          right: SPACING_FOR_CARD_INSET,
         }}
         contentContainerStyle={{
-          paddingHorizontal: Platform.OS === 'android' ? SPACING_FOR_CARD_INSET : 0
+          paddingHorizontal: Platform.OS === 'android' ? -10 : 0,
         }}
         onScroll={Animated.event(
           [
@@ -218,38 +208,34 @@ const ExploreScreen = () => {
         )}
       >
         {state.markers.map((marker, index) =>(
-          <View style={styles.card} key={index}>
-
+          <View style={MapStyle.card} key={index}>
             <View style={{flexDirection:'row', paddingTop:10, paddingLeft:10}}>
             <View style={{flexDirection:'column'}}>
-
-                <Text numberOfLines={1} style={styles.cardtitle}>{marker.title}</Text>
-                <Text numberOfLines={1} style={styles.cardDescription}>{marker.description}</Text>
+                <Text numberOfLines={1} style={MapStyle.cardtitle}>{marker.title}</Text>
+                <Text numberOfLines={1} style={MapStyle.cardDescription}>{marker.description}</Text>
             </View>
             <TouchableOpacity>
             <Ionicons name="ios-close-circle-outline" style={{paddingLeft:85}} size={30} color="gray"/>
             </TouchableOpacity>
       
             </View>
-         
-            <View style={styles.textContent}>
-             
-              <View style={styles.button}>
+            <View style={MapStyle.textContent}>
+              <View style={MapStyle.button}>
                 <TouchableOpacity
                   onPress={() => {}}
-                  style={[styles.signIn, {
+                  style={[MapStyle.signIn, {
                     borderColor: '#8CC641',
                     borderWidth: 1
                   }]}
                 >
-                  <Text style={[styles.textSign, {
+                  <Text style={[MapStyle.textSign, {
                     color: 'white'
                   }]}>Stop Scanning for Beacon</Text>
                 </TouchableOpacity>
               </View>
-              <Image 
+              <Image
               source={marker.image}
-              style={styles.cardImage}
+              style={MapStyle.cardImage}
               resizeMode="cover"
             />
             </View>
@@ -260,129 +246,4 @@ const ExploreScreen = () => {
     </KeyboardAvoidingView>
   );
 };
-
 export default ExploreScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    // flex: 4,
-    height:'80%',
-    
-  },
-  searchBox: {
-    position:'absolute', 
-    marginTop: Platform.OS === 'ios' ? 40 : 20, 
-    flexDirection:"row",
-    backgroundColor: '#fff',
-    width: '90%',
-    alignSelf:'center',
-    borderRadius: 5,
-    padding: 10,
-    shadowColor: '#ccc',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 10,
-  },
-  chipsScrollView: {
-    position:'absolute', 
-    top:Platform.OS === 'ios' ? 90 : 80, 
-    paddingHorizontal:10
-  },
-  chipsIcon: {
-    marginRight: 5,
-  },
-  chipsItem: {
-    flexDirection:"row",
-    backgroundColor:'#fff', 
-    borderRadius:20,
-    padding:8,
-    paddingHorizontal:20, 
-    marginHorizontal:10,
-    height:35,
-    shadowColor: '#ccc',
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.5,
-    shadowRadius: 5,
-    elevation: 10,
-  },
-  scrollView: {
-    position: "absolute",
-    // bottom: 0,
-    // left: 0,
-    // right: 0,
-
-    top:Platform.OS ==='android' ? 445 :550,
-    paddingVertical: 5,
-    // marginTop:Platform.OS ==='android' ? '120%':'140%',
-    paddingLeft:-50
-
-  },
-  endPadding: {
-    paddingRight: width - CARD_WIDTH,
-  },
-  card: {
-    // padding: 10,
-    elevation: 2,
-    backgroundColor: "#FFF",
-    borderTopLeftRadius: 5,
-    borderTopRightRadius: 5,
-    marginHorizontal: 1,
-    shadowColor: "#000",
-    shadowRadius: 5,
-    shadowOpacity: 0.3,
-    shadowOffset: { x: 2, y: -2 },
-    height: Platform.OS === 'android' ? CARD_HEIGHT_ANDROID : CARD_HEIGHT_IOS,
-    width: CARD_WIDTH,
-    overflow: "hidden",
-
-
-  },
-  cardImage: {
-    flex: 3,
-    width: "100%",
-    height: "100%",
-    alignSelf: "center",
-  },
-  textContent: {
-    flex: 2,
-    padding: 10,
-  },
-  cardtitle: {
-    fontSize: 14,
-    // marginTop: 5,
-    fontWeight: "bold",
-    width:"40%"
-  },
-  cardDescription: {
-    fontSize: 13,
-    color: "#444",
-  },
-  markerWrap: {
-    alignItems: "center",
-    justifyContent: "center",
-    width:50,
-    height:50,
-  },
-  marker: {
-    width: 30,
-    height: 30,
-  },
-  button: {
-    alignItems: 'center',
-    marginTop: 5
-  },
-  signIn: {
-      width: '100%',
-      padding:8,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 5,
-      backgroundColor:'#8CC641',
-      marginBottom:20
-  },
-  textSign: {
-      fontSize: 16,
-      fontWeight: 'bold'
-  }
-});

@@ -1,5 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native'
-const styles =StyleSheet.create({
+import {StyleSheet} from 'react-native'
+const DashboardStyles =StyleSheet.create({
     DashboardContainer: {
      flex:1,
     },
@@ -37,11 +37,12 @@ const styles =StyleSheet.create({
     }),
 },
     DashboardInput:{
-        flex:2,
+        // flex:1,
         paddingRight:10,
-        marginTop:20,
+        marginTop:10,
         marginLeft:10,
         borderRadius:5,
+        height:40   
     },
 
     SearchcarsInput:{
@@ -65,8 +66,6 @@ const styles =StyleSheet.create({
     }),
 },
 
-
-    
     inputIcon:{
         paddingBottom:10
     },
@@ -78,7 +77,7 @@ const styles =StyleSheet.create({
     dashboardBottomButton:{
         width:'90%', 
         backgroundColor:'lightgray',
-        marginTop:20,
+        marginTop:100,
         marginHorizontal:15,
         textAlign:'center',
     },
@@ -87,7 +86,6 @@ const styles =StyleSheet.create({
         
         marginHorizontal:10,
         marginTop:20,
-
     },
 })
-export default styles;
+export default DashboardStyles;

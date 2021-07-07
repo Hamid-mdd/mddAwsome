@@ -1,5 +1,5 @@
-import {StyleSheet, Dimensions} from 'react-native'
-const styles =StyleSheet.create({
+import {StyleSheet} from 'react-native'
+const DealerShipStyle =StyleSheet.create({
     DashboardContainer: {
      flex:1,
     },
@@ -64,9 +64,6 @@ const styles =StyleSheet.create({
           },
     }),
 },
-
-
-    
     inputIcon:{
         paddingBottom:10
     },
@@ -87,7 +84,6 @@ const styles =StyleSheet.create({
         
         marginHorizontal:10,
         marginTop:20,
-
     },
 })
-export default styles;
+export default DealerShipStyle;

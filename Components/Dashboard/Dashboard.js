@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Container, Header, Content,Text, Title,Item, Input, Icon , Left, Body, Button, Right} from 'native-base';
-import { View , Platform, StatusBar} from 'react-native'
+import { View , Platform, StatusBar,TextInput,KeyboardAvoidingView, ScrollView} from 'react-native'
 
-import styles from './auth'
+import DashboardStyles from './DashboardStyle';
 import { color } from 'react-native-reanimated';
 function Dashboard({navigation}){
     
@@ -13,7 +13,7 @@ function Dashboard({navigation}){
       },[]);
     return(
         <Container>
-           
+           <ScrollView style={{flex:1}}>
         <Header style={{backgroundColor:'white'}}>
         <StatusBar backgroundColor="#8FC54B" hidden={false} barStyle="light-content"/>
             <Left>
@@ -32,20 +32,23 @@ function Dashboard({navigation}){
             </Body>
             <Right/>
         </Header>
-        <View style={styles.DashboardContainer}>
-            <View style={styles.DashboardInputsView}>
-                <Item style={styles.DashboardInput} regular> 
+        
+        <View style={DashboardStyles.DashboardContainer}>
+            <View style={DashboardStyles.DashboardInputsView}>
+                
+                <Item style={DashboardStyles.DashboardInput} regular> 
                     <Input placeholder='Asset ID e.g VIN'/>
                     <Button iconLeft transparent >
-                        <Icon name='ios-camera-sharp' active style={{color:'gray'}}/>
+                        <Icon name='ios-camera-sharp'  active style={{color:'gray', fontSize:20}}/>
                     </Button>
                 </Item>
-                <Item style={styles.DashboardInput} regular> 
+                <Item style={DashboardStyles.DashboardInput} regular> 
                     <Input placeholder='Car'/>
                     <Button iconLeft transparent >
-                        <Icon name='ios-camera-sharp' active style={{color:'gray'}}/>
+                        <Icon name='ios-camera-sharp' active style={{color:'gray', fontSize:20}}/>
                     </Button>
                 </Item>
+               
             </View>
                  <Button light
                 onPress={() => {
@@ -54,10 +57,11 @@ function Dashboard({navigation}){
                       otherParam: 'anything you want here',
                     });
                   }}
-                 style={styles.dashboardBottomButton}>
+                 style={DashboardStyles.dashboardBottomButton}>
                      <Text style={{paddingLeft:150, color:'gray'}}> PAIR </Text>
                 </Button>
-        </View>      
+        </View> 
+        </ScrollView>     
       </Container>
 
     )

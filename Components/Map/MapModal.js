@@ -1,6 +1,6 @@
 import React from 'react';
 import { SafeAreaView, FlatList, StatusBar } from 'react-native';
-import { markers, mapDarkStyle, mapStandardStyle } from '../Auth/model/mapArray';
+import { markers, mapDarkStyle, mapStandardStyle } from './model/mapArray';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right } from 'native-base';
 
