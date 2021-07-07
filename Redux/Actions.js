@@ -1,5 +1,5 @@
 import React, { Component ,useState} from 'react';
-  import {Fetch_Unfollowers,Fetch_Categories,Fetch_Mutual,Fetch_Fans,Fetch_Following} from './Types.js'
+  import {Fetch_Unfollowers,Fetch_Categories,Fetch_Mutual,Fetch_Fans,Fetch_Following} from './Types'
   
   
   ////////////////Don`t Follow back/////////
@@ -89,4 +89,4 @@ import React, { Component ,useState} from 'react';
         type:Fetch_Following
       };
     }
-    export function Setfollowing(data)
+   

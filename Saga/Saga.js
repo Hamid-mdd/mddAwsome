@@ -4,7 +4,7 @@ import {Fetch_Categories,
   Fetch_Mutual,
   Fetch_Fans,
   Fetch_Following
-} from '../Redux/Types.js'
+} from '../Redux/Types'
 import productsService from '../Services/Api'
 import {SetCategoriesBooks,
   SetCategoriesBooksFailed,
@@ -110,14 +110,6 @@ import {SetCategoriesBooks,
       console.log("error h BAHI")
     }
   }
- 
-  
-
-
-
-
-
-
  
   export function* waitForFetchProducts() {
     yield takeLatest(Fetch_Categories, fetchCategories);

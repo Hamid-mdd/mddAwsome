@@ -6,6 +6,7 @@ import { Container, Header, Content, Form, Item, Input, Label, Button, Text ,Ico
 import { StyleSheet } from 'react-native';
 import Loginstyles from './LoginStyle';
 
+
 function loginScreen({ navigation }) {
     const [name, setName]=useState('');
     const [password, setPassword]=useState('');

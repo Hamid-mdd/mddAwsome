@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { View , Image, Platform, StatusBar, Dimensions} from 'react-native';
+import { View , Image, Platform, StatusBar, Dimensions, ImageBackground} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Container, Header,Body,Title, Content, Form, Item, Input, Label, Button, Text ,Icon, Left, Right } from 'native-base';
@@ -21,28 +21,13 @@ function ResetPassword({ navigation }) {
         navigation.navigate('Login')
     }
   return (
+
     <View style={{ flex: 1, backgroundColor:'white'}}>
-            <StatusBar backgroundColor="#8FC54B" hidden={false} />
-        {Platform.OS === 'ios' ?(
-                <Header>
-                <Left>
-                    <Button transparent onPress={() => navigation.push('Login')}> 
-                  {Platform.OS === 'ios'?(
-                       <Icon name='arrow-back' style={{color:'black', fontSize:20}} />
-                  ):null} 
-                    </Button>
-                </Left>
-                <Body>
-                    <Title style={{fontSize:20, width:270, textAlign:'left'}}></Title>
-                </Body>
-                <Right/>
-            </Header>
-        ):
-        null}
-     
-        <Icon name='checkmark-circle-outline' style={{color:'2EA94E', fontSize:100, marginHorizontal:'38%', marginTop:10}} />
-      <Image source={require('../../Assets/Img/mdd.png')} style={{marginHorizontal:'4%', height:250}} />
-      <Content>
+        
+    <StatusBar backgroundColor="#8FC54B" hidden={false} />
+ 
+      <Image source={require('../../Assets/Img/Login.png')} resizeMode="cover" style={{height:"60%", width:'100%'}} />
+      <Content style={{marginTop:-160}}>
           <Form style={styles.formContainer}>
   
                 <Item regular style={{borderRadius:5}}>
@@ -62,9 +47,13 @@ function ResetPassword({ navigation }) {
                 </Item>
       
                 <Button rounded success style={styles.forgotButton} onPress={handleSubmit}>
-                    <Text>Reset Password</Text>
+                    <Text>Forgot Password</Text>
                 </Button>
           </Form>
+          <View style={styles.lastContainer}>
+                <Text style={styles.textLast}>By proceeding you also agree to the Terms of Service {'\n'} {"                           "}and Privacy Policy</Text>
+                
+        </View>
 
 
         </Content>
@@ -112,21 +101,22 @@ const styles = StyleSheet.create({
     },
     lastContainer:{
         width:'160%',
-        marginTop:60
+        marginTop:30
     },
     forgotText:{
         marginHorizontal:'35%',
         color:'gray'
     },
     textLast:{
-        fontSize:14,
-        marginHorizontal:'4%',
+        fontSize:12,
+        marginHorizontal:'10%',
         color:'gray'
     },
     textLastTwo:{
-        marginHorizontal:'20%',
-        fontSize:14,
+        marginHorizontal:'25%',
+        fontSize:12,
         color:'gray'
-    }
+    },
+
   });   
 export default ResetPassword;

@@ -44,11 +44,11 @@ function ForgotPassword({ navigation }) {
 
         }
       
-        <Icon name='checkmark-circle-outline' style={{color:'2EA94E', fontSize:80, marginHorizontal:'38%', marginTop:10}} />
+
         <View style={styles.mainView}>
-      <Image source={require('../../Assets/Img/mdd.png')}  />
+        <Image source={require('../../Assets/Img/Login.png')} resizeMode="cover" style={{height:"100%", width:'90%'}} />
         </View>
-      <Content>
+      <Content style={{marginTop:50}}>
           <Form style={styles.formContainer}>
                 <Item regular style={{borderRadius:5}}>
                     <Input placeholder='Enter your Email here' style={styles.inputfield}  
@@ -59,14 +59,19 @@ function ForgotPassword({ navigation }) {
                     <Text>Continue</Text>
                 </Button>
           </Form>
+          <View style={styles.lastContainer}>
+                <Text style={styles.textLast}>By proceeding you also agree to the Terms of Service {'\n'} {"                           "}and Privacy Policy</Text>
+                
+        </View>
         </Content>
+     
     </View>
   );
 }
 const styles = StyleSheet.create({
     formContainer: {
         marginHorizontal:'4%',
-        marginTop:30
+        marginTop:10,
     },
     inputfield:{
         backgroundColor:"white",
@@ -89,7 +94,6 @@ const styles = StyleSheet.create({
             marginHorizontal:20
             },
       }),
-
     },
     forgotButton:{
         marginHorizontal:'1%',
@@ -103,7 +107,7 @@ const styles = StyleSheet.create({
     },
     lastContainer:{
         width:'160%',
-        marginTop:60
+        marginTop:40,
     },
     forgotText:{
         marginHorizontal:'35%',
