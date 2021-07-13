@@ -6,11 +6,10 @@ const SearchCarStyle = StyleSheet.create({
     },
     item: {
       flexDirection:'row',
-      padding: 20,
-      marginVertical: 8,
-      marginHorizontal: 16,
+      marginTop:10,
       borderWidth:0.5,
       borderColor:'gray',
+      flex:1,
 
     },
     textContainer:{

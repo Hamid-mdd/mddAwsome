@@ -46,7 +46,7 @@ function ForgotPassword({ navigation }) {
       
 
         <View style={styles.mainView}>
-        <Image source={require('../../Assets/Img/Login.png')} resizeMode="cover" style={{height:"100%", width:'90%'}} />
+        <Image source={require('../../Assets/Img/mdd.png')} resizeMode="contain" style={{height:"100%", width:'90%'}} />
         </View>
       <Content style={{marginTop:50}}>
           <Form style={styles.formContainer}>
@@ -85,7 +85,8 @@ const styles = StyleSheet.create({
         ...Platform.select({
             ios: {
               backgroundColor: 'white',
-              marginHorizontal:15
+              marginHorizontal:15,
+              flex:1
             },
             android: {
 

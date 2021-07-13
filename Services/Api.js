@@ -1,4 +1,5 @@
 import { delay } from 'redux-saga/effects';
+import axios from 'axios';
 
 
  
@@ -12,55 +13,28 @@ function service() {
       .then((data) => data)
       .catch((e) => e);
   };
-  const getBestSellingBooks = () => {
-    return fetch(
-      'https://jsonplaceholder.typicode.com/users',
-      
-    )
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((e) => e);
-  };
-  const getMutual = () => {
-    return fetch(
-      'https://jsonplaceholder.typicode.com/users',
-      
-    )
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((e) => e);
-  };
-  const getFans = () => {
-    return fetch(
-      'https://jsonplaceholder.typicode.com/users',
-      
-    )
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((e) => e);
-  };
-  const getFollowing = () => {
-    return fetch(
-      'https://jsonplaceholder.typicode.com/users',
-      
-    )
-      .then((res) => res.json())
-      .then((data) => data)
-      .catch((e) => e);
+
+
+  const LoginUserRequest = (payload) => {
+    return axios.post('https://cakesplanet.com/test/public/api/customer/login?',payload)
+    .then(function (response) {
+      console.log("response",response);
+    })
+    .catch(function (error) {
+      console.log("error",error);
+    });
   };
 
 
-
- 
   return {
     getAllProducts,
-    getBestSellingBooks,
-    getMutual,
-    getFans,
-    getFollowing
+    LoginUserRequest
+
   };
 }
  
 const productsService = service();
  
 export default productsService;
+
+

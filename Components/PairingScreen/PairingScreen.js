@@ -4,7 +4,7 @@ import { View , Platform, StatusBar,TextInput,KeyboardAvoidingView, ScrollView} 
 
 import DashboardStyles from './DashboardStyle';
 import { color } from 'react-native-reanimated';
-function Dashboard({navigation}){
+function PairingScreen({navigation}){
     
     useEffect(() => {
         // StatusBar.setBarStyle('light-content', true)
@@ -66,4 +66,4 @@ function Dashboard({navigation}){
 
     )
 }
-export default Dashboard;
+export default PairingScreen;

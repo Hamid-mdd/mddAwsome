@@ -5,23 +5,30 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Container, Header, Content, Form, Item, Input, Label, Button, Text ,Icon, Left, Accordion } from 'native-base';
 import { StyleSheet } from 'react-native';
 import Loginstyles from './LoginStyle';
+// import {LoginSuccess} from '../../Redux/Actions/LoginAction'
+import { fetchUsers } from '../../Store/actions/LoginAction'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 function loginScreen({ navigation }) {
     const [name, setName]=useState('');
     const [password, setPassword]=useState('');
+    const dispatch = useDispatch()
+    const reduxData = useSelector((state) => state)
+    console.log("counter", reduxData)
+
+
 
     const handleChange =(e)=>{
         e.preventDefault();
         const value=e.target.value;
         setName(value)
-        console.log("value", name)
     }
     const handleSubmit =()=>{
-        navigation.navigate('dashboard')
+      dispatch(fetchUsers({name,password}))
+        navigation.navigate('Home')
     }
   return (
-      
     <View style={Loginstyles.mainViewContainer}>
         <View style={Loginstyles.mainView}>
       <Image source={require('../../Assets/Img/mdd.png')}  />
@@ -31,6 +38,7 @@ function loginScreen({ navigation }) {
                 <Item regular style={{borderRadius:5}}>
                     <Input placeholder='Username' style={Loginstyles.inputfield}  
                         onChangeText={name => setName(name)}
+                     
                         defaultValue={name}/>
                 </Item>
                 <Item regular style={{marginTop:10, borderRadius:5}}>
@@ -39,6 +47,7 @@ function loginScreen({ navigation }) {
                     style={Loginstyles.inputfield} 
                     secureTextEntry={true}
                     defaultValue={password}
+                 
                     onChangeText={password=>setPassword(password)}
                     />
                 </Item>
