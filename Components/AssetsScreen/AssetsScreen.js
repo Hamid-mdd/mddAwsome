@@ -15,8 +15,8 @@ import styles from './AssetsStyle'
 import { Button } from 'native-base'
 import markers from './MapArray'
 const region = {
-    latitude: 22.62938671242907,
-    longitude: 88.4354486029795,
+    latitude: 40.7353454,
+    longitude: -73.9994384,
     latitudeDelta: 0.04864195044303443,
     longitudeDelta: 0.040142817690068,
 }
@@ -70,7 +70,7 @@ const AssetsScreen = ({ navigation }) => {
         <View style={styles.container}>
             <BottomSheet
                 ref={bs}
-                snapPoints={[400, 400, 400]}
+                snapPoints={Platform.OS === "ios" ? [385, 385, 385] : [300, 300, 300]}
                 renderContent={renderInner}
                 renderHeader={renderHeader}
                 initialSnap={1}

@@ -15,9 +15,10 @@ import MapView, { PROVIDER_GOOGLE, Geojson } from "react-native-maps";
 import SearchCarStyle from '../SearchCar/SearchCarStyle'
 import Entypo from 'react-native-vector-icons/Entypo'
 import { Input, } from 'native-base'
+import { Platform } from 'react-native';
 const region = {
-  latitude: 22.62938671242907,
-  longitude: 88.4354486029795,
+  latitude: 40.7353454,
+  longitude: -73.9994384,
   latitudeDelta: 0.04864195044303443,
   longitudeDelta: 0.040142817690068,
 }
@@ -62,12 +63,14 @@ const HomeScreen = ({ navigation }) => {
           <Ionicons name="mic" size={20} color='gray' />
         </View>
       </View>
+      <View>
+        <FlatList
+          data={FeatureData}
+          renderItem={RenderItem}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
 
-      <FlatList
-        data={FeatureData}
-        renderItem={RenderItem}
-        keyExtractor={(item) => item.id}
-      />
     </View>
   )
   const renderHeader = () => (
@@ -81,7 +84,7 @@ const HomeScreen = ({ navigation }) => {
   const bs = React.createRef()
 
   const RenderItem = ({ item, onPress, backgroundColor, textColor }) => (
-    <TouchableOpacity onPress={onPress} style={SearchCarStyle.item} onPress={() => navigation.navigate('Assets')}>
+    <TouchableOpacity onPress={onPress} style={HomeStyle.itemFlat} onPress={() => navigation.navigate('Assets')}>
       <Image source={{ uri: item.Image }} style={{ width: 120, height: 120, margin: 5 }} />
       <View style={{ flexDirection: 'column', }}>
 
@@ -109,7 +112,7 @@ const HomeScreen = ({ navigation }) => {
 
       <BottomSheet
         ref={bs}
-        snapPoints={[800, 400, 400]}
+        snapPoints={Platform.OS === "ios" ? [800, 385, 385] : [650, 300, 300]}
         renderContent={renderInner}
         renderHeader={renderHeader}
         initialSnap={1}
@@ -118,8 +121,8 @@ const HomeScreen = ({ navigation }) => {
 
       <MapView
         initialRegion={region}
+
         style={HomeStyle.MapView}
-        onPress={() => sheetRef.current.snapTo(0)}
       // provider={PROVIDER_GOOGLE}
 
       // customMapStyle={ mapStandardStyle}

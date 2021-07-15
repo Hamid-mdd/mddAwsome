@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { StyleSheet, } from 'react-native'
 
 const IMAGE_SIZE = 200
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         position: 'absolute',
-        marginTop: 85,
+        marginTop: Platform.OS === "ios" ? 85 : 75,
         backgroundColor: "white",
         height: "5%",
         width: "10%",
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         right: 0,
     },
     panel: {
-        height: 400,
+        height: Platform.OS === "ios" ? 380 : 340,
         padding: 20,
         backgroundColor: 'white',
     },

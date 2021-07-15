@@ -4,6 +4,7 @@ import { View, Platform, Switch, StatusBar } from 'react-native'
 import ToggleSwitch from 'toggle-switch-react-native'
 import DealerShipStyle from "./DealerShipStyle";
 import { color } from 'react-native-reanimated';
+import { TouchableOpacity } from "react-native";
 function Dealership({ navigation }) {
 
   const [isEnabled, setIsEnabled] = useState(false);
@@ -26,12 +27,22 @@ function Dealership({ navigation }) {
         <Text style={DealerShipStyle.dealerShipHeading}>Select Dealership</Text>
         <Text style={DealerShipStyle.dealerShipText}>This page will load  what dealerships  {"\n"}the user has access to
           . Users Sometimes{"\n"}Switch between several Stores{"\n"} {"\n"}We Should be able to Turn on Location {"\n"}Services on This Page</Text>
-        <Button transparent style={{ marginTop: 20 }} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style={{
+          alignItems: "center",
+          width: 80,
+          marginTop: 20
+        }}
+          onPress={() => navigation.navigate('Login')}
+        >
           <Text style={{ color: 'black' }}>Logout </Text>
-        </Button>
-        <Button transparent >
+        </TouchableOpacity>
+        <TouchableOpacity style={{
+          alignItems: "center",
+          width: 150,
+          marginTop: 20
+        }} >
           <Text style={{ color: 'black' }}>Change Password</Text>
-        </Button>
+        </TouchableOpacity>
       </View>
     </Container>
   )

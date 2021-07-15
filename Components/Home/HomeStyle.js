@@ -31,7 +31,7 @@ const HomeStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     position: 'absolute',
-    marginTop: 75,
+    marginTop: Platform.OS === "ios" ? 85 : 75,
     backgroundColor: "white",
     height: "5%",
     width: "10%",
@@ -136,6 +136,16 @@ const HomeStyle = StyleSheet.create({
   map: {
     height: '100%',
     width: '100%',
+  },
+  itemFlat: {
+    flexDirection: 'row',
+    marginTop: 10,
+    borderBottomWidth: 0.3,
+    borderBottomColor: "gray",
+    flex: 1,
+    borderTopWidth: 0.3,
+    borderTopColor: "gray"
+
   },
 })
 export default HomeStyle;
