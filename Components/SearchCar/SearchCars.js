@@ -4,76 +4,76 @@ import {
   StyleSheet,
   View,
   Text,
-  FlatList,TouchableOpacity
+  FlatList, TouchableOpacity
 } from 'react-native'
 import BottomSheet from 'reanimated-bottom-sheet'
 import HomeStyle from '../Home/HomeStyle';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
 import FeatureData from '../Home/FeatureData'
-import MapView, {PROVIDER_GOOGLE, Geojson} from "react-native-maps";
+import MapView, { PROVIDER_GOOGLE, Geojson } from "react-native-maps";
 import SearchCarStyle from './SearchCarStyle'
-import {Input,} from 'native-base'
-const region={
+import { Input, } from 'native-base'
+const region = {
   latitude: 22.62938671242907,
-  longitude: 88.4354486029795, 
+  longitude: 88.4354486029795,
   latitudeDelta: 0.04864195044303443,
   longitudeDelta: 0.040142817690068,
 }
-const HomeScreen = () => { 
+const HomeScreen = () => {
   const renderInner = () => (
     <View style={styles.panel}>
-     <View style={{
-                        height:35,
-                        backgroundColor:"#ECECE7",
-                        flexDirection:"row",
-                        justifyContent:"space-between",
-                        borderRadius:10,
-                        width:'100%',
-                    }}>
-                      <View style={{
-                          flexDirection:"row",
-                          marginTop:2
-                      }} >
-                      <Ionicons style={{
-                          marginLeft:5,
-                          marginTop:5
-                      }}
-                      
-                      name="search" size={20} color="gray"/>
-                      <View style={{width:'80%', height:38,marginBottom:20}}> 
-                          <Input 
-                          placeholder="Search" 
-                          placeholderTextColor="gray" 
-                          style={{color:'gray', marginLeft:10, fontSize:14}}
-                          
-                      /> 
-                      </View>
-                      
-                      </View>
-                      <View style={{
-                          flexDirection:"row",
-                          justifyContent:"space-around",
-                          width:40,
-                          margin:6
-                      }}>
+      <View style={{
+        height: 35,
+        backgroundColor: "#ECECE7",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        borderRadius: 10,
+        width: '100%',
+      }}>
+        <View style={{
+          flexDirection: "row",
+          marginTop: 2
+        }} >
+          <Ionicons style={{
+            marginLeft: 5,
+            marginTop: 5
+          }}
 
-                      <Ionicons name="mic" size={20} color='gray' />
-                      </View>
-                    </View>
+            name="search" size={20} color="gray" />
+          <View style={{ width: '80%', height: 38, marginBottom: 20 }}>
+            <Input
+              placeholder="Search"
+              placeholderTextColor="gray"
+              style={{ color: 'gray', marginLeft: 10, fontSize: 14 }}
 
-     <FlatList
-    data={FeatureData}
-    renderItem={RenderItem}
-    keyExtractor={(item) => item.id}
-     />
+            />
+          </View>
+
+        </View>
+        <View style={{
+          flexDirection: "row",
+          justifyContent: "space-around",
+          width: 40,
+          margin: 6
+        }}>
+
+          <Ionicons name="mic" size={20} color='gray' />
+        </View>
+      </View>
+
+      <FlatList
+        data={FeatureData}
+        renderItem={RenderItem}
+        keyExtractor={(item) => item.id}
+      />
     </View>
   )
 
   const renderHeader = () => (
     <View style={styles.header}>
       <View style={styles.panelHeader}>
-        <View style={styles.panelHandle} onPress={() => this.bs.current.snapTo(1)}/>
+        <View style={styles.panelHandle} onPress={() => this.bs.current.snapTo(1)} />
       </View>
     </View>
   )
@@ -83,70 +83,71 @@ const HomeScreen = () => {
   const RenderItem = ({ item, onPress, backgroundColor, textColor }) => (
 
     <TouchableOpacity onPress={onPress} style={SearchCarStyle.item}>
-   
-         <Image source={{uri:item.Image}} style={{width:120, height:120,margin:5,backgroundColor:'blue'}} />
-        <View style={{flexDirection:'column',}}>
 
-        <Text numberOfLines={1} style={{backgroundColor:'#5484ff',
-        fontSize:16,
-        marginTop:5,
-        marginLeft:5,
-        borderWidth:1,color:'white',
-        width:"19%",
-        fontWeight:'bold'}} > Header Place Holder </Text>
-        <Text numberOfLines={3} style={{width:'19%',color:'white',backgroundColor:'lightgray',borderWidth:1,marginLeft:5,marginTop:5}} >
+      <Image source={{ uri: item.Image }} style={{ width: 120, height: 120, margin: 5, backgroundColor: 'blue' }} />
+      <View style={{ flexDirection: 'column', }}>
+
+        <Text numberOfLines={1} style={{
+          backgroundColor: '#5484ff',
+          fontSize: 16,
+          marginTop: 5,
+          marginLeft: 5,
+          borderWidth: 1, color: 'white',
+          width: "19%",
+          fontWeight: 'bold'
+        }} > Header Place Holder </Text>
+        <Text numberOfLines={3} style={{ width: '19%', color: 'white', backgroundColor: 'lightgray', borderWidth: 1, marginLeft: 5, marginTop: 5 }} >
           {item.Des}
         </Text>
-        <View style={{flexDirection:'row',marginTop:15,}}>
-        <Ionicons name="car" size={20} color='gray' style={{borderWidth:1,borderColor:"#ffc054",marginLeft:5}}  />
-        <Ionicons name="key" size={20} color='gray' style={{borderWidth:1,borderColor:"#ffc054",marginLeft:15}} />
+        <View style={{ flexDirection: 'row', marginTop: 15, }}>
+          <Ionicons name="car" size={20} color='gray' style={{ borderWidth: 1, borderColor: "#ffc054", marginLeft: 5 }} />
+          <Ionicons name="key" size={20} color='gray' style={{ borderWidth: 1, borderColor: "#ffc054", marginLeft: 15 }} />
         </View>
-        </View>
-       
-       
-         
+      </View>
+
+
+
     </TouchableOpacity>
   );
-    return (
-      <View style={styles.container}>
+  return (
+    <View style={styles.container}>
 
-        <BottomSheet
-          ref={bs}
-          snapPoints={[800, 400, 400]}
-          renderContent={renderInner}
-          renderHeader={renderHeader}
-          initialSnap={1}
-          enabledInnerScrolling
-        />
-     
-             <MapView
-              initialRegion={region}
-              style={HomeStyle.MapView}
-              onPress={() => sheetRef.current.snapTo(0)}
-              // provider={PROVIDER_GOOGLE}
-             
-              // customMapStyle={ mapStandardStyle}
-            
-            >
-     
-        </MapView>
-        <View style={HomeStyle.mapIcons} >
-              <Ionicons name="ios-information-circle-outline" size={20} color="blue"  onPress={()=>navigation.navigate('dealership')}/>
-              
-             </View>
-             <View style={HomeStyle.mapIcons1}>
-             <FontAwesome name="location-arrow" size={20} color="blue" />
-              
-             </View>
+      <BottomSheet
+        ref={bs}
+        snapPoints={[800, 400, 400]}
+        renderContent={renderInner}
+        renderHeader={renderHeader}
+        initialSnap={1}
+        enabledInnerScrolling
+      />
 
-             <View style={HomeStyle.mapPlusIcon} >
-             <AntDesign name="pluscircle" size={40} color="#8AC833"  onPress={()=>navigation.navigate('pairingScreen')}/>
-              
-             </View>
+      <MapView
+        initialRegion={region}
+        style={HomeStyle.MapView}
+        onPress={() => sheetRef.current.snapTo(0)}
+      // provider={PROVIDER_GOOGLE}
+
+      // customMapStyle={ mapStandardStyle}
+
+      >
+
+      </MapView>
+      <View style={HomeStyle.mapIcons} >
+        <Ionicons name="ios-information-circle-outline" size={20} color="blue" onPress={() => navigation.navigate('dealership')} />
 
       </View>
-    )
-  
+      <View style={HomeStyle.mapIcons1}>
+        <FontAwesome name="location-arrow" size={20} color="blue" />
+
+      </View>
+      <View style={HomeStyle.mapPlusIcon} >
+        <AntDesign name="pluscircle" size={40} color="#8AC833" onPress={() => navigation.navigate('pairingScreen')} />
+
+      </View>
+
+    </View>
+  )
+
 }
 export default HomeScreen;
 const IMAGE_SIZE = 200

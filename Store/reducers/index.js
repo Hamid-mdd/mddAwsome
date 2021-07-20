@@ -1,9 +1,10 @@
-import {combineReducers} from 'redux'
+import { combineReducers } from 'redux'
+
 
 import LoginReducer from './LoginReducer'
 
 const ReducerData = combineReducers({
-    LoginReducer:LoginReducer
+    LoginReducer: LoginReducer
 })
 
 export default ReducerData

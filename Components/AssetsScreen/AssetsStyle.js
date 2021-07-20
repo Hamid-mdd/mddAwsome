@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         right: 0,
     },
     panel: {
-        height: Platform.OS === "ios" ? 380 : 340,
+        height: Platform.OS === "ios" ? 380 : 300,
         padding: 20,
         backgroundColor: 'white',
     },
@@ -126,6 +126,45 @@ const styles = StyleSheet.create({
         width: 50,
         height: 50,
     },
+    Button_style: {
+        width: 30,
+        height: 30,
+        backgroundColor: 'lightgray',
+        marginRight: 10,
+        marginTop: 5,
+        justifyContent: "center"
+    },
+    FindTag_button: {
+        backgroundColor: '#787878',
+        height: 30,
+        justifyContent: 'center',
+        width: 180
+    },
+    Key_Button: {
+        marginLeft: 10,
+        backgroundColor: '#32c904',
+        height: 30,
+        justifyContent: "space-between",
+        width: 70
+    },
+    Key_text: {
+        marginRight: 10,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    car_button: {
+        marginLeft: 10,
+        backgroundColor: '#787878',
+        height: 30,
+        justifyContent: "space-between",
+        width: 70
+    },
+    Image_Style: {
+        width: "100%",
+        height: Platform.OS === "ios" ? 240 : 200,
+        marginTop: 10,
+        borderRadius: 3
+    }
 
 })
 export default styles;

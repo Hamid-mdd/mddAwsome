@@ -1,13 +1,17 @@
 import React, { useState } from "react";
-import { Container, Header, Content, Text, Title, Item, Input, Icon, Left, Body, Button, Right } from 'native-base';
-import { View, Platform, Switch, StatusBar } from 'react-native'
+import { Container, Text } from 'native-base';
+import { View, StatusBar } from 'react-native'
 import ToggleSwitch from 'toggle-switch-react-native'
 import DealerShipStyle from "./DealerShipStyle";
-import { color } from 'react-native-reanimated';
 import { TouchableOpacity } from "react-native";
-function Dealership({ navigation }) {
+import { useSelector, useDispatch } from 'react-redux'
 
+
+function Dealership({ navigation }) {
+  const reduxData = useSelector((state) => state)
+  console.log("reduxData", reduxData)
   const [isEnabled, setIsEnabled] = useState(false);
+
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
   console.log("data")
   return (
@@ -19,7 +23,7 @@ function Dealership({ navigation }) {
             isOn={isEnabled}
             onColor="#146aff"
             offColor="#146aff"
-            labelStyle={{ color: "black", fontWeight: "100", marginLeft: 100 }}
+            labelStyle={DealerShipStyle.Toggle_Label}
             size="small"
             onToggle={toggleSwitch}
           />
@@ -27,20 +31,12 @@ function Dealership({ navigation }) {
         <Text style={DealerShipStyle.dealerShipHeading}>Select Dealership</Text>
         <Text style={DealerShipStyle.dealerShipText}>This page will load  what dealerships  {"\n"}the user has access to
           . Users Sometimes{"\n"}Switch between several Stores{"\n"} {"\n"}We Should be able to Turn on Location {"\n"}Services on This Page</Text>
-        <TouchableOpacity style={{
-          alignItems: "center",
-          width: 80,
-          marginTop: 20
-        }}
+        <TouchableOpacity style={DealerShipStyle.Logout_Button}
           onPress={() => navigation.navigate('Login')}
         >
           <Text style={{ color: 'black' }}>Logout </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={{
-          alignItems: "center",
-          width: 150,
-          marginTop: 20
-        }} >
+        <TouchableOpacity style={DealerShipStyle.ChangePassword_Button} >
           <Text style={{ color: 'black' }}>Change Password</Text>
         </TouchableOpacity>
       </View>

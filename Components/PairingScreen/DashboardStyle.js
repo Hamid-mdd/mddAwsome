@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet, Platform } from 'react-native'
 const DashboardStyles = StyleSheet.create({
   DashboardContainer: {
     flex: 1,
@@ -88,5 +88,11 @@ const DashboardStyles = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 20,
   },
+  Header_Title: {
+    fontSize: 20,
+    width: 270,
+    textAlign: 'left',
+    color: Platform.OS === "android" ? "black" : null
+  }
 })
 export default DashboardStyles;

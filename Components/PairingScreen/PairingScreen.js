@@ -1,9 +1,7 @@
 import React, { useEffect } from 'react';
-import { Container, Header, Content, Text, Title, Item, Input, Icon, Left, Body, Button, Right } from 'native-base';
-import { View, Platform, StatusBar, TextInput, KeyboardAvoidingView, ScrollView } from 'react-native'
-
+import { Container, Header, Text, Title, Item, Input, Icon, Left, Body, Button, Right } from 'native-base';
+import { View, Platform, StatusBar, ScrollView } from 'react-native'
 import DashboardStyles from './DashboardStyle';
-import { color } from 'react-native-reanimated';
 function PairingScreen({ navigation }) {
 
     useEffect(() => {
@@ -24,11 +22,7 @@ function PairingScreen({ navigation }) {
                         </Button>
                     </Left>
                     <Body>
-                        {Platform.OS === 'ios' ?
-                            <Title style={{ fontSize: 20, width: 270, textAlign: 'left' }}>BMW of Minettonka</Title>
-                            :
-                            <Title style={{ fontSize: 20, width: 270, textAlign: 'left', color: 'black' }}>BMW of Minettonka</Title>
-                        }
+                        <Title style={DashboardStyles.Header_Title}>BMW of Minettonka</Title>
                     </Body>
                     <Right />
                 </Header>

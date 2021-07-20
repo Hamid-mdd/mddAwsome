@@ -1,4 +1,5 @@
 import React from 'react';
+import { Platform } from 'react-native';
 import { StyleSheet, Dimensions, StatusBar } from 'react-native'
 const { width, height } = Dimensions.get("window");
 const CARD_HEIGHT_ANDROID = 220;
@@ -85,14 +86,14 @@ const HomeStyle = StyleSheet.create({
     right: 0,
   },
   panel: {
-    height: 800,
+    height: Platform.OS === "ios" ? 730 : 600,
     padding: 20,
-    backgroundColor: '#f7f5eee8',
+    backgroundColor: 'white',
   },
   header: {
-    backgroundColor: '#f7f5eee8',
+    backgroundColor: 'white',
     shadowColor: '#000000',
-    paddingTop: 20,
+    paddingTop: 5,
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
   },
@@ -101,10 +102,10 @@ const HomeStyle = StyleSheet.create({
   },
   panelHandle: {
     width: 40,
-    height: 8,
+    height: 6,
     borderRadius: 4,
     backgroundColor: '#00000040',
-    marginBottom: 10,
+    marginBottom: 3,
   },
   panelTitle: {
     fontSize: 27,
@@ -140,12 +141,80 @@ const HomeStyle = StyleSheet.create({
   itemFlat: {
     flexDirection: 'row',
     marginTop: 10,
-    borderBottomWidth: 0.3,
-    borderBottomColor: "gray",
+    borderBottomWidth: 1,
+    borderBottomColor: "#f5f5f5",
     flex: 1,
-    borderTopWidth: 0.3,
-    borderTopColor: "gray"
+    borderTopWidth: 1,
+    borderTopColor: "#f5f5f5"
 
   },
+  ViewTwo: {
+    height: 35,
+    backgroundColor: "#ECECE7",
+    flexDirection: "row",
+    justifyContent: "space-between",
+    borderRadius: 10,
+    width: '100%',
+    borderWidth: 1,
+    borderColor: '#cccccc',
+    elevation: 5,
+    shadowColor: 'gray',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2
+  },
+  InputView: {
+    width: '80%',
+    height: 38,
+    marginBottom: 20
+  },
+  Child_View: {
+    flexDirection: "row",
+    marginTop: 2
+  },
+  search_Icon: {
+    marginLeft: 5,
+    marginTop: 5
+  },
+  Input_style: {
+    color: 'gray', marginLeft: 10, fontSize: 14
+  },
+  Mic_View: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: 40,
+    margin: 6
+  },
+  Image_style: {
+    width: 120, height: 120, margin: 5
+  },
+  Text_style: {
+    fontSize: 16,
+    marginTop: 5,
+    marginLeft: 5,
+    color: 'black',
+    width: "19%",
+    fontWeight: '500'
+  },
+  Des_Text: {
+    width: '19%',
+    color: 'black',
+    backgroundColor: 'white',
+    marginLeft: 8,
+    marginTop: 5,
+    fontSize: 14
+  },
+  Car_style: {
+    // borderWidth: 0.3,
+    // borderColor: "lightgray",
+    marginLeft: 5
+  },
+  Key_style: {
+    // borderWidth: 0.3,
+    // borderColor: "lightgray",
+    marginLeft: 10
+  }
 })
 export default HomeStyle;

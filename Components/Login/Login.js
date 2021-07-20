@@ -1,33 +1,49 @@
 import React, { useState } from 'react';
-import { View, Image, Platform, Dimensions } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Container, Header, Content, Form, Item, Input, Label, Button, Text, Icon, Left, Accordion } from 'native-base';
-import { StyleSheet } from 'react-native';
+import { View, Image } from 'react-native';
+import { Content, Form, Item, Input, Button, Text, ActivityIndicator } from 'native-base';
 import Loginstyles from './LoginStyle';
 // import {LoginSuccess} from '../../Redux/Actions/LoginAction'
 import { fetchUsers } from '../../Store/actions/LoginAction'
 import { useSelector, useDispatch } from 'react-redux'
-
-
+import Auth from '@aws-amplify/auth';
 function loginScreen({ navigation }) {
-  const [name, setName] = useState('');
+  const [username, setUserName] = useState('');
+  const [userNameError, setUsernameError] = useState('')
   const [password, setPassword] = useState('');
+  const [passwordError, setPasswordError] = useState('');
   const dispatch = useDispatch()
   const reduxData = useSelector((state) => state)
-  console.log("counter", reduxData)
+  // const handleSubmit = () => {
 
-
-
-  const handleChange = (e) => {
-    e.preventDefault();
-    const value = e.target.value;
-    setName(value)
-  }
-  const handleSubmit = () => {
-    dispatch(fetchUsers({ name, password }))
-    navigation.navigate('Home')
-  }
+  //   if (username === '') {
+  //     console.log("if")
+  //     setUsernameError("Please Enter User Name")
+  //   }
+  //   else if (password === '') {
+  //     console.log("else")
+  //     setPasswordError("Please Enter password")
+  //   }
+  //   else {
+  //     console.log("else", username, password)
+  //     setTimeout(() => {
+  //       console.log("dealer")
+  //       dispatch(fetchUsers({ username, password }))
+  //       navigation.navigate('Home')
+  //     }, 1000);
+  //   }
+  // }
+  const SignIn = () => {
+    Auth.signIn({
+      username: 'hamid@mdd.io',
+      password: 'Changeme123',
+    })
+      .then(res => {
+        console.log('succes for login', res);
+      })
+      .catch(err => {
+        console.log('error for signIn', err);
+      });
+  };
   return (
     <View style={Loginstyles.mainViewContainer}>
       <View style={Loginstyles.mainView}>
@@ -37,10 +53,11 @@ function loginScreen({ navigation }) {
         <Form style={Loginstyles.formContainer}>
           <Item regular style={{ borderRadius: 5 }}>
             <Input placeholder='Username' style={Loginstyles.inputfield}
-              onChangeText={name => setName(name)}
-
-              defaultValue={name} />
+              onChangeText={username => setUserName(username)}
+              defaultValue={username} />
+            {console.log(username)}
           </Item>
+          <Text style={{ color: 'red' }}>{userNameError}</Text>
           <Item regular style={{ marginTop: 10, borderRadius: 5 }}>
 
             <Input placeholder='Password'
@@ -51,8 +68,9 @@ function loginScreen({ navigation }) {
               onChangeText={password => setPassword(password)}
             />
           </Item>
-          <Button style={Loginstyles.loginButton} onPress={handleSubmit}>
-            <Text>Sign In</Text>
+          <Text style={{ color: 'red' }}>{passwordError}</Text>
+          <Button style={Loginstyles.loginButton} onPress={SignIn}>
+            <Text>SIGN IN</Text>
           </Button>
         </Form>
         <View style={Loginstyles.forgotContainer}>
@@ -60,7 +78,7 @@ function loginScreen({ navigation }) {
             style={Loginstyles.forgotText}
             onPress={() => navigation.navigate('forgot')}
           >
-            <Text>Forgot Password ?</Text>
+            <Text  >Forgot Password ?</Text>
           </Button>
         </View>
 

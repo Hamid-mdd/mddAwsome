@@ -31,7 +31,7 @@ const AssetsScreen = ({ navigation }) => {
                         marginTop: 15,
                         fontWeight: 'bold'
                     }} >U 2015 Audi S4 Prestige </Text>
-                    <Button rounded style={{ width: 30, height: 30, backgroundColor: 'lightgray', marginRight: 10, marginTop: 5, justifyContent: "center" }}>
+                    <Button rounded style={styles.Button_style}>
                         <Ionicons name="close" color='gray' size={15} />
                     </Button>
                 </View>
@@ -39,21 +39,21 @@ const AssetsScreen = ({ navigation }) => {
                     abdjskajakkakakakakakakakakakkakakakakakakakkakakak
                 </Text>
                 <View style={{ flexDirection: 'row', marginTop: 10, }}>
-                    <Button style={{ backgroundColor: '#787878', height: 30, justifyContent: 'center', width: 180 }} >
+                    <Button style={styles.FindTag_button} >
                         <Text style={{ color: "white" }} >Find- Scan for tag</Text>
                     </Button>
-                    <Button style={{ marginLeft: 10, backgroundColor: '#32c904', height: 30, justifyContent: "space-between", width: 70 }}>
+                    <Button style={styles.Key_Button}>
                         <Ionicons name="key" size={20} color='gray' style={{ marginLeft: 5 }} />
-                        <Text style={{ marginRight: 10, fontWeight: 'bold', color: 'white' }} >KEY</Text>
+                        <Text style={styles.Key_text} >KEY</Text>
                     </Button>
-                    <Button style={{ marginLeft: 10, backgroundColor: '#787878', height: 30, justifyContent: "space-between", width: 70 }}>
+                    <Button style={styles.car_button}>
                         <Ionicons name="car" size={20} color='black' style={{ marginLeft: 5 }} />
                         <Text style={{ marginRight: 10, fontWeight: 'bold' }} >CAR</Text>
                     </Button>
                 </View>
 
                 <Image source={{ uri: "https://cdn.pixabay.com/photo/2015/05/28/23/12/auto-788747_960_720.jpg" }}
-                    style={{ width: "100%", height: 240, marginTop: 10, borderRadius: 3 }} />
+                    style={styles.Image_Style} />
 
             </View>
         </View>

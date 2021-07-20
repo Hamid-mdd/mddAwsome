@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { View, Image, StatusBar, Platform, Dimensions } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import { Container, Header, Body, Title, Content, Form, Item, Input, Label, Button, Text, Icon, Left, Right } from 'native-base';
+import { Header, Body, Title, Content, Form, Item, Input, Label, Button, Text, Icon, Left, Right } from 'native-base';
 import { StyleSheet } from 'react-native';
 const MaxWidth = Dimensions.get('screen').width;
 const Maxheight = Dimensions.get('screen').height;
@@ -31,12 +29,12 @@ function ForgotPassword({ navigation }) {
                             <Left>
                                 <Button transparent onPress={() => navigation.push('Login')}>
                                     {Platform.OS === 'ios' ? (
-                                        <Icon name='arrow-back' style={{ color: 'black', fontSize: 20 }} />
+                                        <Icon name='arrow-back' style={styles.backIcon} />
                                     ) : null}
                                 </Button>
                             </Left>
                             <Body>
-                                <Title style={{ fontSize: 20, width: 270, textAlign: 'left' }}>Forgot Screen</Title>
+                                <Title style={styles.headerTitle}>Forgot Screen</Title>
                             </Body>
                             <Right />
                         </Header>
@@ -46,7 +44,7 @@ function ForgotPassword({ navigation }) {
 
 
             <View style={styles.mainView}>
-                <Image source={require('../../Assets/Img/mdd.png')} resizeMode="contain" style={{ height: "100%", width: '90%' }} />
+                <Image source={require('../../Assets/Img/mdd.png')} resizeMode="contain" style={styles.Imagestyle} />
             </View>
             <Content style={{ marginTop: 50 }}>
                 <Form style={styles.formContainer}>
@@ -127,6 +125,19 @@ const styles = StyleSheet.create({
         marginHorizontal: '20%',
         fontSize: 14,
         color: 'gray'
+    },
+    backIcon: {
+        color: 'black',
+        fontSize: 20
+    },
+    headerTitle: {
+        fontSize: 20,
+        width: 270,
+        textAlign: 'left'
+    },
+    Imagestyle: {
+        height: "100%",
+        width: '90%'
     }
 });
 export default ForgotPassword;

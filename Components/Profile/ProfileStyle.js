@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 const styles = StyleSheet.create({
     Buttonchangeorg: {
         marginTop: 30,
@@ -21,6 +21,13 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         borderColor: 'black',
         backgroundColor: '#d3dceb',
+    },
+    Header_TITLE: {
+        fontSize: 20,
+        width: 270,
+        textAlign: 'left',
+        color: Platform.OS === "android" ? "black" : null
     }
+
 })
 export default styles;

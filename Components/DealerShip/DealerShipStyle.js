@@ -85,5 +85,20 @@ const DealerShipStyle = StyleSheet.create({
     marginHorizontal: 10,
     marginTop: 20,
   },
+  Logout_Button: {
+    alignItems: "center",
+    width: 80,
+    marginTop: 20
+  },
+  ChangePassword_Button: {
+    alignItems: "center",
+    width: 150,
+    marginTop: 20
+  },
+  Toggle_Label: {
+    color: "black",
+    fontWeight: "100",
+    marginLeft: 100
+  }
 })
 export default DealerShipStyle;
